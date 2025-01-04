@@ -8,19 +8,19 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <h1 align="center">KitsuneLab©</h1>
+  <h1 align="center">IndianLabs©</h1>
   <h3 align="center">CS2 Egg</h3>
   <a align="center">CS2 Pterodactyl Egg with custom scripts such as CSS auto-updater, MetaMod auto-updater, junk cleaner, auto restart on update with colored logging.</a>
 
   <p align="center">
     <br />
-    <a href="https://github.com/K4ryuu/CS2-Egg/blob/dev/pterodactyl/kitsunelab-cs2-egg.json">Download</a>
+    <a href="https://github.com/K4ryuu/CS2-Egg/blob/dev/pterodactyl/IndianLabs-cs2-egg.json">Download</a>
     ·
-    <a href="https://github.com/K4ryuu/CS2-Egg/blob/beta/pterodactyl/kitsunelab-cs2-egg.json">Download Beta</a>
+    <a href="https://github.com/K4ryuu/CS2-Egg/blob/beta/pterodactyl/IndianLabs-cs2-egg.json">Download Beta</a>
     ·
-    <a href="https://github.com/K4ryuu/CS2-Egg/issues/new?assignees=KitsuneLab-Development&labels=bug&projects=&template=bug_report.md&title=%5BBUG%5D">Report Bug</a>
+    <a href="https://github.com/K4ryuu/CS2-Egg/issues/new?assignees=IndianLabs-Development&labels=bug&projects=&template=bug_report.md&title=%5BBUG%5D">Report Bug</a>
     ·
-    <a href="https://github.com/K4ryuu/CS2-Egg/issues/new?assignees=KitsuneLab-Development&labels=enhancement&projects=&template=feature_request.md&title=%5BREQ%5D">Request Feature</a>
+    <a href="https://github.com/K4ryuu/CS2-Egg/issues/new?assignees=IndianLabs-Development&labels=enhancement&projects=&template=feature_request.md&title=%5BREQ%5D">Request Feature</a>
     ·
     <a href="https://docs.kitsune-lab.com/main/cs2-egg">Documentations</a>
   </p>
@@ -41,7 +41,7 @@
 
 ## Documentation
 
-Detailed documentation on installation, updates, feature configurations, and more can be found at the [KitsuneLab Documentation](https://docs.kitsune-lab.com/main/cs2-egg).
+Detailed documentation on installation, updates, feature configurations, and more can be found at the [IndianLabs Documentation](https://docs.kitsune-lab.com/main/cs2-egg).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
