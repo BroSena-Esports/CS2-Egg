@@ -5,14 +5,14 @@
     "update_url": null
   },
   "exported_at": "2024-06-13T21:31:46+02:00",
-  "name": "IndianLabs CS2 Egg @ SAVAGE",
+  "name": "BroSena CS2 Egg @ SAVAGE",
   "author": "contact@kitsune-lab.com",
   "description": "The SteamRT3 Platform image for Pterodactyl CS2 servers is packed with numerous features, designed to simplify server management and reduce hassle.",
   "features": null,
   "docker_images": {
-    "IndianLabs CS2": "docker.io/savage313/css2-public:latest",
-    "IndianLabs CS2 Public Beta": "docker.io/savage313/css2-public:beta",
-    "IndianLabs CS2 Development": "docker.io/savage313/css2-public:dev"
+    "BroSena CS2": "docker.io/savage313/css2-public:latest",
+    "BroSena CS2 Public Beta": "docker.io/savage313/css2-public:beta",
+    "BroSena CS2 Development": "docker.io/savage313/css2-public:dev"
   },
   "file_denylist": [],
   "startup": "./game/cs2.sh {{CUSTOM_PARAMS}} -dedicated +ip 0.0.0.0 -port {{SERVER_PORT}} +map {{SRCDS_MAP}} -maxplayers {{SRCDS_MAXPLAYERS}} +sv_setsteamaccount {{STEAM_ACC}} +game_type {{GAME_TYPE}} +game_mode {{GAME_MODE}}",
