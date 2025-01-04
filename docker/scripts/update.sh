@@ -110,8 +110,117 @@ cleanup_and_update() {
         update_addon "roflmuffin/CounterStrikeSharp" "$OUTPUT_DIR" "css" "CSS"
     fi
 
+    if [ "${SKIN_AUTOUPDATE:-0}" = "1" ]; then
+        update_skin_plugin "roflmuffin/CounterStrikeSharp" "$OUTPUT_DIR" "css" "CSS"
+    fi
+
+    if [ "${Match_AUTOUPDATE:-0}" = "1" ]; then
+        update_matchzy "roflmuffin/CounterStrikeSharp" "$OUTPUT_DIR" "css" "CSS"
+    fi   
     # Clean up
     rm -rf "$TEMP_DIR"
+}
+
+update_skin_plugin() {
+    local repo="BroSena-Esports/Skin_Plugin_clone"
+    local temp_subdir="skin_plugin"
+    local addon_name="SkinPlugin"
+
+    local temp_dir="$TEMP_DIR/$temp_subdir"
+    mkdir -p "$OUTPUT_DIR" "$temp_dir"
+    rm -rf "$temp_dir"/*
+
+    # Fetch latest release info from GitHub
+    local api_response
+    api_response=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
+    if [ -z "$api_response" ]; then
+        log_message "Failed to get release info for $repo" "error"
+        return 1
+    fi
+
+    # Look for a .zip asset (adjust if needed to match your exact filename pattern)
+    local asset_url
+    asset_url=$(echo "$api_response" \
+        | grep -oP '"browser_download_url": "\K[^"]+' \
+        | grep '\.zip$')
+
+    if [ -z "$asset_url" ]; then
+        log_message "No suitable zip asset found for $repo" "error"
+        return 1
+    fi
+
+    # Extract the version (from "tag_name")
+    local new_version
+    new_version=$(echo "$api_response" \
+        | grep -oP '"tag_name": "\K[^"]+')
+
+    # Check current version
+    local current_version
+    current_version=$(get_current_version "$addon_name")
+    if ! check_version "$addon_name" "$current_version" "$new_version"; then
+        return 0
+    fi
+
+    # Download, extract, copy
+    if handle_download_and_extract "$asset_url" "$temp_dir/download.zip" "$temp_dir" "zip"; then
+        cp -r "$temp_dir/addons/." "$OUTPUT_DIR" && \
+        update_version_file "$addon_name" "$new_version" && \
+        log_message "Update of $repo completed successfully" "success"
+        return 0
+    fi
+
+    return 1
+}
+
+update_matchzy() {
+    local repo="BroSena-Esports/MatchZY-Clone"
+    local temp_subdir="matchzy"
+    local addon_name="MatchZY"
+
+    local temp_dir="$TEMP_DIR/$temp_subdir"
+    mkdir -p "$OUTPUT_DIR" "$temp_dir"
+    rm -rf "$temp_dir"/*
+
+    # Fetch latest release info from GitHub
+    local api_response
+    api_response=$(curl -s "https://api.github.com/repos/$repo/releases/latest")
+    if [ -z "$api_response" ]; then
+        log_message "Failed to get release info for $repo" "error"
+        return 1
+    fi
+
+    # Look for a .zip asset (adjust if needed to match your exact filename pattern)
+    local asset_url
+    asset_url=$(echo "$api_response" \
+        | grep -oP '"browser_download_url": "\K[^"]+' \
+        | grep '\.zip$')
+
+    if [ -z "$asset_url" ]; then
+        log_message "No suitable zip asset found for $repo" "error"
+        return 1
+    fi
+
+    # Extract the version (from "tag_name")
+    local new_version
+    new_version=$(echo "$api_response" \
+        | grep -oP '"tag_name": "\K[^"]+')
+
+    # Check current version
+    local current_version
+    current_version=$(get_current_version "$addon_name")
+    if ! check_version "$addon_name" "$current_version" "$new_version"; then
+        return 0
+    fi
+
+    # Download, extract, copy
+    if handle_download_and_extract "$asset_url" "$temp_dir/download.zip" "$temp_dir" "zip"; then
+        cp -r "$temp_dir/addons/." "$OUTPUT_DIR" && \
+        update_version_file "$addon_name" "$new_version" && \
+        log_message "Update of $repo completed successfully" "success"
+        return 0
+    fi
+
+    return 1
 }
 
 update_addon() {
