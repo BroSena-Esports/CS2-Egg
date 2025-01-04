@@ -121,6 +121,16 @@
       "field_type": "text"
     },
     {
+      "name": "Auto Update - CUSTOM",
+      "description": "Enable or disable the automatic update of CSS on every server startup.",
+      "env_variable": "CUSTOM_AUTOUPDATE",
+      "default_value": "0",
+      "user_viewable": true,
+      "user_editable": true,
+      "rules": "required|boolean",
+      "field_type": "text"
+    },
+    {
       "name": "Auto Update - MatchZy",
       "description": "Enable or disable the automatic update of CSS on every server startup.",
       "env_variable": "MATCH_AUTOUPDATE",
