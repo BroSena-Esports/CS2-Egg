@@ -4,6 +4,7 @@ source /utils/version.sh
 
 # Directories
 GAME_DIRECTORY="./game/csgo"
+OUTPUT_DIR2="./game/csgo"
 OUTPUT_DIR="./game/csgo/addons"
 TEMP_DIR="./temps"
 ACCELERATOR_DUMPS_DIR="$OUTPUT_DIR/AcceleratorCS2/dumps"
@@ -111,11 +112,11 @@ cleanup_and_update() {
     fi
 
     if [ "${SKIN_AUTOUPDATE:-0}" = "1" ]; then
-        update_skin_plugin "roflmuffin/CounterStrikeSharp" "$OUTPUT_DIR" "css" "CSS"
+        update_skin_plugin "BroSena-Esports/Skin_Plugin_clone" "$OUTPUT_DIR" "css" "CSS"
     fi
 
-    if [ "${Match_AUTOUPDATE:-0}" = "1" ]; then
-        update_matchzy "roflmuffin/CounterStrikeSharp" "$OUTPUT_DIR" "css" "CSS"
+    if [ "${MATCH_AUTOUPDATE:-0}" = "1" ]; then
+        update_matchzy "BroSena-Esports/MatchZY-Clone" "$OUTPUT_DIR2" "css" "CSS"
     fi   
     # Clean up
     rm -rf "$TEMP_DIR"
@@ -178,7 +179,7 @@ update_matchzy() {
     local addon_name="MatchZY"
 
     local temp_dir="$TEMP_DIR/$temp_subdir"
-    mkdir -p "$OUTPUT_DIR" "$temp_dir"
+    mkdir -p "$OUTPUT_DIR2" "$temp_dir"
     rm -rf "$temp_dir"/*
 
     # Fetch latest release info from GitHub
@@ -214,7 +215,7 @@ update_matchzy() {
 
     # Download, extract, copy
     if handle_download_and_extract "$asset_url" "$temp_dir/download.zip" "$temp_dir" "zip"; then
-        cp -r "$temp_dir/addons/." "$OUTPUT_DIR" && \
+        cp -r "$temp_dir/." "$OUTPUT_DIR2" && \
         update_version_file "$addon_name" "$new_version" && \
         log_message "Update of $repo completed successfully" "success"
         return 0

@@ -5,14 +5,14 @@
     "update_url": null
   },
   "exported_at": "2024-06-13T21:31:46+02:00",
-  "name": "KitsuneLab CS2 Egg @ K4ryuu",
+  "name": "KitsuneLab CS2 Egg @ SAVAGE",
   "author": "contact@kitsune-lab.com",
   "description": "The SteamRT3 Platform image for Pterodactyl CS2 servers is packed with numerous features, designed to simplify server management and reduce hassle.",
   "features": null,
   "docker_images": {
-    "KitsuneLab CS2": "docker.io/sples1/k4ryuu-cs2:latest",
-    "KitsuneLab CS2 Public Beta": "docker.io/sples1/k4ryuu-cs2:beta",
-    "KitsuneLab CS2 Development": "docker.io/sples1/k4ryuu-cs2:dev"
+    "KitsuneLab CS2": "docker.io/savage313/css2-public:latest",
+    "KitsuneLab CS2 Public Beta": "docker.io/savage313/css2-public:beta",
+    "KitsuneLab CS2 Development": "docker.io/savage313/css2-public:dev"
   },
   "file_denylist": [],
   "startup": "./game/cs2.sh {{CUSTOM_PARAMS}} -dedicated +ip 0.0.0.0 -port {{SERVER_PORT}} +map {{SRCDS_MAP}} -maxplayers {{SRCDS_MAXPLAYERS}} +sv_setsteamaccount {{STEAM_ACC}} +game_type {{GAME_TYPE}} +game_mode {{GAME_MODE}}",
@@ -123,7 +123,7 @@
     {
       "name": "Auto Update - MatchZy",
       "description": "Enable or disable the automatic update of CSS on every server startup.",
-      "env_variable": "Match_AUTOUPDATE",
+      "env_variable": "MATCH_AUTOUPDATE",
       "default_value": "0",
       "user_viewable": true,
       "user_editable": true,
